@@ -6,6 +6,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import {
   Box,
   Container,
@@ -57,12 +58,26 @@ function TabPanel(props: TabPanelProps) {
 }
 
 export default function PersonaDashboard() {
-  const [activeTab, setActiveTab] = useState(0);
+  const [searchParams] = useSearchParams();
+  const tabParam = searchParams.get('tab');
+  const initialTab = tabParam ? parseInt(tabParam, 10) : 0;
+
+  const [activeTab, setActiveTab] = useState(initialTab);
   const [personas, setPersonas] = useState<PersonaCardData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [filters, setFilters] = useState<PersonaFilters>({});
+
+  // Update tab from URL parameter
+  useEffect(() => {
+    if (tabParam) {
+      const tabIndex = parseInt(tabParam, 10);
+      if (!isNaN(tabIndex) && tabIndex >= 0 && tabIndex <= 3) {
+        setActiveTab(tabIndex);
+      }
+    }
+  }, [tabParam]);
 
   // Load personas
   useEffect(() => {

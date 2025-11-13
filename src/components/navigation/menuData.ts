@@ -22,6 +22,11 @@ import {
   CameraAlt as DataCaptureIcon,
   Phone as PhoneIcon,
   Psychology as PersonaIcon,
+  ViewModule as PersonaLibraryIcon,
+  Balance as PersonaCompareIcon,
+  ShowChart as PersonaTrendsIcon,
+  TuneOutlined as PersuasionIcon,
+  FileDownload as AudienceExportIcon,
   // Maps
   Map as MapIcon,
   Public as GlobalIcon,
@@ -70,12 +75,45 @@ export const categoryMenuItems: Record<string, MenuItem[]> = {
 
   // DATA INTELLIGENCE
   'data-intelligence': [
+    // Voter Personas Subcategory
     {
       name: 'Voter Personas',
       href: '/voter-personas',
       icon: PersonaIcon,
       badge: 'ML'
     },
+    {
+      name: '  → Persona Library',
+      href: '/voter-personas?tab=0',
+      icon: PersonaLibraryIcon
+    },
+    {
+      name: '  → Persona Comparison',
+      href: '/voter-personas?tab=1',
+      icon: PersonaCompareIcon
+    },
+    {
+      name: '  → Geographic Map',
+      href: '/voter-personas?tab=2',
+      icon: MapIcon
+    },
+    {
+      name: '  → Trends & Migration',
+      href: '/voter-personas?tab=3',
+      icon: PersonaTrendsIcon
+    },
+    {
+      name: '  → Persuasion Scoring',
+      href: '/voter-personas/persuasion',
+      icon: PersuasionIcon,
+      badge: 'New'
+    },
+    {
+      name: '  → Audience Export',
+      href: '/voter-personas/export',
+      icon: AudienceExportIcon
+    },
+    // Other Data Intelligence Items
     {
       name: 'Social Media Channels',
       href: '/social-media-channels',
